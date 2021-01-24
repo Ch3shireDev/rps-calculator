@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url('./assets/background.png');
+    background-attachment: fixed;
+}
+
+.main-element{
+    background: #eeeeeee6;
+    color:#333;
+}
+
+input{
+    background: #eeeeee;
+}
+
+table{
+    background:#eeeeee;
+}

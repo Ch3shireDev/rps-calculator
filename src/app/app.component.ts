@@ -9,12 +9,12 @@ declare let MathJax: any;
 })
 export class AppComponent implements OnInit {
   title = 'rps-calculator';
-  isGenerated = true;
-  nx = 3;
-  ny = 2;
+  isGenerated = false;
+  nx = 2;
+  ny = 3;
 
-  X = ["0", "1", "2"]
-  Y = ["-1", "1"]
+  X = ["-1", "0"]
+  Y = ["-2", "0", "1"]
 
   PX: number[];
   PY: number[];
@@ -23,6 +23,10 @@ export class AppComponent implements OnInit {
   EY: number;
   EX2: number;
   EY2: number;
+  VarX: number;
+  VarY: number;
+  EXY:number;
+  CovXY:number;
 
   dataRows: string[][];
 
@@ -30,8 +34,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.dataRows = [
-      ["1/2", "3/4", "0.2"],
-      ["1/8", "3/8", "1/16"],
+      ["1/8", "0"],
+      ["1/4", "3/8"],
+      ["0", "1/4"],
     ];
 
     this.generate();
@@ -93,14 +98,22 @@ export class AppComponent implements OnInit {
   }
 
   public generate() {
+    this.isGenerated = false;
+
     this.PX = this.generatePX();
     this.PY = this.generatePY();
     this.EX = this.getMeanValue(this.X, this.PX);
     this.EY = this.getMeanValue(this.Y, this.PY);
     this.EX2 = this.getMeanValue2(this.X, this.PX);
     this.EY2 = this.getMeanValue2(this.Y, this.PY);
+    this.VarX = this.EX2 - (this.EX) * this.EX;
+    this.VarY = this.EY2 - this.EY * this.EY;
 
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    setTimeout(() => {
+
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+      this.isGenerated = true;
+    }, 400);
   }
 
   public generatePX() {

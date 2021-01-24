@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { MathJaxModule } from 'ngx-mathjax';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,12 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    MathJaxModule.forRoot({
+      version: '2.7.5',
+      config: 'TeX-AMS_HTML',
+      hostname: 'cdnjs.cloudflare.com'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

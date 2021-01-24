@@ -1,10 +1,10 @@
 td {
     border: 1px solid #ccc;
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
     vertical-align: middle;
     display: table-cell;
-    width: 80px;
+    width: 100px;
     font-size: 0.8rem;
 }
 
@@ -13,4 +13,13 @@ input {
     border: none;
     width: 40px;
     font-size: 0.8rem;
+}
+
+li{
+    padding-bottom:2rem;
+    font-weight: 600;   
+}
+
+ol{
+    padding-left: 0.7rem;
 }
