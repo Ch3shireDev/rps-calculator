@@ -1,3 +1,5 @@
+<h1>Kalkulator RPS</h1>
+
 <h2 class="mb-5">Dwuwymiarowa funkcja prawdopodobieństwa</h2>
 
 <p>Rozkład łączny zmiennej losowej \((X; Y)\) jest następujący:</p>
@@ -47,8 +49,7 @@
 
 <div *ngIf="isGenerated" mathjax>
   <h3>Rozwiązania</h3>
-  <ol>
-    <li>Wyznacz rozkłady brzegowe zmiennych \(X\) i \(Y\).</li>
+    <p class="font-weight-bold">Wyznacz rozkłady brzegowe zmiennych \(X\) i \(Y\).</p>
     <div class="py-2">
       <p>Rozkład brzegowy \(X\):</p>
       <table class="mb-5">
@@ -85,7 +86,7 @@
         </tbody>
       </table>
     </div>
-    <li>Oblicz wartości oczekiwane zmiennych \(X\) i \(Y\).</li>
+    <p class="font-weight-bold">Oblicz wartości oczekiwane zmiennych \(X\) i \(Y\).</p>
     <div>
       <p>
         Wartości oczekiwane obliczamy ze wzorów \(EX = \sum_i X_ip_i\) oraz
@@ -95,7 +96,7 @@
       <p>\(EX = {{ EXs }}={{ EX }}\)</p>
       <p>\(EY = {{ EXs }}={{ EY }}\)</p>
     </div>
-    <li>Oblicz wariancje i odchylenia standardowe zmiennych \(X\) i \(Y\).</li>
+    <p class="font-weight-bold">Oblicz wariancje i odchylenia standardowe zmiennych \(X\) i \(Y\).</p>
 
     <p>
       Aby obliczyć wariancję \(Var X = \sigma^2\) oraz odchylenie standardowe
@@ -108,16 +109,16 @@
       \(\sigma_X^2 =Var X = EX^2 - (EX)^2 = {{ EX2 }}-({{ EX }})^2 =
       {{ VarX }}\)
     </p>
-    <p>\(\sigma_X = \sqrt{{ "{" }} Var X {{ "}" }} = {{sigmaxs}}={{ sigmax }}\)</p>
+    <p>\(\sigma_X = \sqrt{{ "{" }} Var X {{ "}" }} = {{sigmaxs}}\approx{{ sigmax }}\)</p>
 
     <p>\(EY^2 = {{ EY2 }}\)</p>
     <p>
       \(\sigma_Y^2 =Var Y = EY^2 - (EY)^2 = {{ EY2 }}-({{ EY }})^2 =
       {{ VarY }}\)
     </p>
-    <p>\(\sigma_Y = \sqrt{{ "{" }} Var Y {{ "}" }} = {{sigmays}}={{ sigmay }}\)</p>
+    <p>\(\sigma_Y = \sqrt{{ "{" }} Var Y {{ "}" }} = {{sigmays}}\approx{{ sigmay }}\)</p>
 
-    <li>Sprawdź, czy zmienne X i Y są niezależne.</li>
+    <p class="font-weight-bold">Sprawdź, czy zmienne X i Y są niezależne.</p>
 
     <p>
       Zmienne są niezależne, jeśli dla wszystkich par \(X_i, Y_j\) spełnione
@@ -167,9 +168,9 @@
       </tbody>
     </table>
 
-    <li>
+    <p class="font-weight-bold">
       Sprawdź, czy zmienne X i Y są skorelowane. Jeśli tak, to w jakim stopniu?
-    </li>
+    </p>
 
     <p>\[EXY = \sum_{{ "{" }}i,j{{ "}" }}X_iY_jP(X_i,Y_j) = {{ EXY }}\]</p>
     <p>
@@ -186,10 +187,10 @@
 
     <p>
       \[\rho(X,Y) = \frac{{ "{" }}Cov(X,Y) {{ "}{" }} \sigma_X\sigma_Y{{ "}" }}
-      = {{rhoXYs}} = {{rhoXY}}\]
+      = {{rhoXYs}} \approx {{rhoXY}}\]
     </p>
 
-    <li>Wyznacz rozkład zmiennej Z = X + Y.</li>
+    <p class="font-weight-bold">Wyznacz rozkład zmiennej Z = X + Y.</p>
 
     <p>
       Rozkład zmiennej będącej funkcją zmiennych losowych wyznacza się poprzez
@@ -212,7 +213,7 @@
       </tbody>
     </table>
 
-    <li>Wyznacz wartość srednią i wariancję zmiennej X + 2Y.</li>
+    <p class="font-weight-bold">Wyznacz wartość srednią i wariancję zmiennej X + 2Y.</p>
 
     <p>Dla wartości średniej spełniony jest wzór:</p>
 
@@ -227,7 +228,7 @@
     \[E(T)=E(X+2Y) = E(X) + E(2Y) = E(X)+2 E(Y)\] \[Var(T)=Var(X+2Y) = Var(X) +
     4Var(Y) + 4Cov(X,Y)\]
 
-    <li>Wyznacz funkcję prawdopodobienstwa \(W = XY\).</li>
+    <p class="font-weight-bold">Wyznacz funkcję prawdopodobienstwa \(W = XY\).</p>
 
     <p>
       Ponownie, należy znaleźć wszystkie możliwe wartości \(W_i\) i zsumować
@@ -250,5 +251,9 @@
       </tbody>
     </table>
 
-  </ol>
+
+  <h3>Appendix</h3>
+  <p>Wszelkie uwagi proszę słać na adres: <a href="mailto:igor.nowicki.spam@gmail.com">igor.nowicki.spam@gmail.com</a>.</p>
 </div>
+
+
