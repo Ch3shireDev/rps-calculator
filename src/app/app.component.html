@@ -43,11 +43,13 @@
 
 <p><button class="btn btn-primary" (click)="generate()">Generuj</button></p>
 
+<p>Wyznacz odpowiednie parametry.</p>
+
 <div *ngIf="isGenerated" mathjax>
   <h3>Rozwiązania</h3>
   <ol>
     <li>Wyznacz rozkłady brzegowe zmiennych \(X\) i \(Y\).</li>
-    <div class="py-5">
+    <div class="py-2">
       <p>Rozkład brzegowy \(X\):</p>
       <table class="mb-5">
         <thead>
@@ -66,7 +68,7 @@
         </tbody>
       </table>
       <p>Rozkład brzegowy \(Y\):</p>
-      <table class="mb-5">
+      <table class="mb-3">
         <thead>
           <tr>
             <td></td>
@@ -90,8 +92,8 @@
         \(EY=\sum_j Y_jp_j\).
       </p>
 
-      <p>\(EX = {{ EX }}\)</p>
-      <p>\(EY = {{ EY }}\)</p>
+      <p>\(EX = {{ EXs }}={{ EX }}\)</p>
+      <p>\(EY = {{ EXs }}={{ EY }}\)</p>
     </div>
     <li>Oblicz wariancje i odchylenia standardowe zmiennych \(X\) i \(Y\).</li>
 
@@ -102,9 +104,18 @@
     </p>
 
     <p>\(EX^2 = {{ EX2 }}\)</p>
-    <p>\(Var X = EX^2 - (EX)^2 = {{ EX2 }}-({{ EX }})^2 = {{ VarX }}\)</p>
+    <p>
+      \(\sigma_X^2 =Var X = EX^2 - (EX)^2 = {{ EX2 }}-({{ EX }})^2 =
+      {{ VarX }}\)
+    </p>
+    <p>\(\sigma_X = \sqrt{{ "{" }} Var X {{ "}" }} = {{sigmaxs}}={{ sigmax }}\)</p>
 
     <p>\(EY^2 = {{ EY2 }}\)</p>
+    <p>
+      \(\sigma_Y^2 =Var Y = EY^2 - (EY)^2 = {{ EY2 }}-({{ EY }})^2 =
+      {{ VarY }}\)
+    </p>
+    <p>\(\sigma_Y = \sqrt{{ "{" }} Var Y {{ "}" }} = {{sigmays}}={{ sigmay }}\)</p>
 
     <li>Sprawdź, czy zmienne X i Y są niezależne.</li>
 
@@ -130,7 +141,7 @@
         <tr *ngFor="let py of PY; index as j">
           <td>\(P(Y_{{ j + 1 }}) = {{ PY[j] }}\)</td>
           <td *ngFor="let px of PX">
-            {{ px * py }}
+            {{ multiply(px,py) }}
           </td>
         </tr>
       </tbody>
@@ -162,17 +173,82 @@
 
     <p>\[EXY = \sum_{{ "{" }}i,j{{ "}" }}X_iY_jP(X_i,Y_j) = {{ EXY }}\]</p>
     <p>
-      \[Cov(X,Y) = EXY - EX\cdot EY = {{ EXY }} - {{ EX }}\cdot{{ EY }} =
+      \[Cov(X,Y) = EXY - EX\cdot EY = {{ EXY }} - ({{ EX }})\cdot({{ EY }}) =
       {{ CovXY }}\]
     </p>
 
     <p>
-      Warunkiem niezależności zmiennych \(X, Y\) jest \(Cov(X,Y) = 0\). Jeśli
-      \(\Cov(X,Y) \neq 0\), to oznacza to, że zmienne są skorelowane.
+      Warunkiem niezależności zmiennych \(X, Y\) jest \( Cov(X,Y) = 0\). Jeśli
+      \( Cov(X,Y) \neq 0\), to oznacza to, że zmienne są skorelowane.
+    </p>
+
+    <p>Współczynnik korelacji \(\rho(X,Y)\) wyznacza się następująco:</p>
+
+    <p>
+      \[\rho(X,Y) = \frac{{ "{" }}Cov(X,Y) {{ "}{" }} \sigma_X\sigma_Y{{ "}" }}
+      = {{rhoXYs}} = {{rhoXY}}\]
     </p>
 
     <li>Wyznacz rozkład zmiennej Z = X + Y.</li>
+
+    <p>
+      Rozkład zmiennej będącej funkcją zmiennych losowych wyznacza się poprzez
+      uzyskanie wszystkich możliwych wartości nowej zmiennej i zsumowanie
+      prawdopodobieństw wszystkich możliwych kombinacji prawdopodobieństw.
+    </p>
+
+    <table mathjax class="mb-4">
+      <thead>
+        <tr>
+          <td>\(Z\)</td>
+          <td *ngFor="let z of Z; index as i">\(Z_{{ i + 1 }} = {{ z }}\)</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>\(P(Z)\)</td>
+          <td *ngFor="let pz of PZ">\({{ pz }}\)</td>
+        </tr>
+      </tbody>
+    </table>
+
     <li>Wyznacz wartość srednią i wariancję zmiennej X + 2Y.</li>
-    <li>Wyznacz funkcję prawdopodobienstwa W = XY.</li>
+
+    <p>Dla wartości średniej spełniony jest wzór:</p>
+
+    \[E(aX+bY+c) = aE(X) + bE(Y)+c.\]
+
+    <p>Dla wariancji spełniony jest natomiast wzór:</p>
+
+    \[Var(aX+bY+c) = a^2Var(X)+b^2Var(Y) + 2ab\cdot Cov(X,Y)\]
+
+    <p>Niech \(T = X+2Y\). Na podstawie powyższych wzorów:</p>
+
+    \[E(T)=E(X+2Y) = E(X) + E(2Y) = E(X)+2 E(Y)\] \[Var(T)=Var(X+2Y) = Var(X) +
+    4Var(Y) + 4Cov(X,Y)\]
+
+    <li>Wyznacz funkcję prawdopodobienstwa \(W = XY\).</li>
+
+    <p>
+      Ponownie, należy znaleźć wszystkie możliwe wartości \(W_i\) i zsumować
+      stowarzyszone z nimi prawdopodobieństwa dla poszczególnych \(X_j, Y_k\).
+    </p>
+
+    
+    <table mathjax class="mb-4">
+      <thead>
+        <tr>
+          <td>\(W\)</td>
+          <td *ngFor="let w of W; index as i">\(W_{{ i + 1 }} = {{ w }}\)</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>\(P(W)\)</td>
+          <td *ngFor="let pw of PW">\({{ pw }}\)</td>
+        </tr>
+      </tbody>
+    </table>
+
   </ol>
 </div>
