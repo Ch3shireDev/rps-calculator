@@ -20,13 +20,13 @@ table {
     background: #eeeeee;
 }
 
-@media only screen and(max-width: 576px) {
+@media(max-width:576px) {
     .main-element {
-        overflow-x: auto;
-        overflow-y: auto;
+        overflow-x: visible;
     }
 
     body {
+        background: #eeeeeee6;
         background-image: none;
         background-color: white;
     }

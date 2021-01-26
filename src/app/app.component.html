@@ -8,14 +8,14 @@
   <thead>
     <tr>
       <td>\( P(X,Y) \)</td>
-      <td *ngFor="let x of dataRows[0]; index as i">
-        \( X_{{ i + 1 }} \)= <input [value]="X[i]" />
+      <td *ngFor="let x of X; index as i; trackBy: trackByFn">
+        \( X_{{ i + 1 }} \)= <input [value]="x" (input)="setVar(X,i, $event.target.value)" />
       </td>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let row of dataRows; index as j">
-      <td>\(Y_{{ j + 1 }}\) = <input [value]="Y[j]" /></td>
+      <td>\(Y_{{ j + 1 }}\) = <input [value]="Y[j]"  (input)="setVar(Y,j, $event.target.value)"  /></td>
       <td *ngFor="let x of row; index as k; trackBy: trackByFn">
         <input
           [value]="x"

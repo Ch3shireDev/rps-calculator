@@ -59,6 +59,11 @@ export class AppComponent implements OnInit {
     this.generate();
   }
 
+  public setVar(X, i, value) {
+    X[i] = value;
+    this.generate();
+  }
+
   public addX() {
     this.nx++;
     this.dataRows.forEach(row => { row.push("0"); });
@@ -128,18 +133,18 @@ export class AppComponent implements OnInit {
     this.VarXs = `${this.EX2} - (${this.EX})^2`;
     this.VarX = math.simplify(this.VarXs);
     this.sigmaxs = `\\sqrt{${this.VarX}}`;
-    this.sigmax = math.format(math.simplify(`sqrt(${this.VarX})`), {precision:3});
+    this.sigmax = math.format(math.simplify(`sqrt(${this.VarX})`), { precision: 3 });
     this.VarYs = `${this.EY2} - (${this.EY})^2`;
     this.VarY = math.simplify(this.VarYs);
     this.sigmays = `\\sqrt{${this.VarY}}`;
-    this.sigmay = math.format(math.simplify(`sqrt(${this.VarY})`),{precision:3});
+    this.sigmay = math.format(math.simplify(`sqrt(${this.VarY})`), { precision: 3 });
 
     this.EXY = this.getEXY();
 
 
 
-    this.CovXY = math.format(math.simplify(`${this.EXY}-(${this.EX})*(${this.EY})`), {precision:3});
-    this.rhoXY = math.format(math.simplify(`(${this.CovXY})/(sqrt(${this.VarX})*sqrt(${this.VarY}))`), {precision:3});
+    this.CovXY = math.format(math.simplify(`${this.EXY}-(${this.EX})*(${this.EY})`), { precision: 3 });
+    this.rhoXY = math.format(math.simplify(`(${this.CovXY})/(sqrt(${this.VarX})*sqrt(${this.VarY}))`), { precision: 3 });
     this.rhoXYs = `\\frac{${this.CovXY}}{\\sqrt{${this.VarX}}\\cdot\\sqrt{${this.VarY}}}`;
 
     [this.Z, this.PZ] = this.generatePZ();
