@@ -9,13 +9,17 @@
     <tr>
       <td>\( P(X,Y) \)</td>
       <td *ngFor="let x of X; index as i; trackBy: trackByFn">
-        \( X_{{ i + 1 }} \)= <input [value]="x" (input)="setVar(X,i, $event.target.value)" />
+        \( X_{{ i + 1 }} \)=
+        <input [value]="x" (input)="setVar(X, i, $event.target.value)" />
       </td>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let row of dataRows; index as j">
-      <td>\(Y_{{ j + 1 }}\) = <input [value]="Y[j]"  (input)="setVar(Y,j, $event.target.value)"  /></td>
+      <td>
+        \(Y_{{ j + 1 }}\) =
+        <input [value]="Y[j]" (input)="setVar(Y, j, $event.target.value)" />
+      </td>
       <td *ngFor="let x of row; index as k; trackBy: trackByFn">
         <input
           [value]="x"
@@ -49,211 +53,228 @@
 
 <div *ngIf="isGenerated" mathjax>
   <h3>Rozwiązania</h3>
-    <p class="font-weight-bold">Wyznacz rozkłady brzegowe zmiennych \(X\) i \(Y\).</p>
-    <div class="py-2">
-      <p>Rozkład brzegowy \(X\):</p>
-      <table class="mb-5">
-        <thead>
-          <tr>
-            <td></td>
-            <td *ngFor="let x of dataRows[0]; index as i">
-              \(X_{{ i + 1 }} = {{ X[i] }}\)
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>\(P(X=X_i)=p_i\)</td>
-            <td *ngFor="let px of PX">\({{ px }}\)</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>Rozkład brzegowy \(Y\):</p>
-      <table class="mb-3">
-        <thead>
-          <tr>
-            <td></td>
-            <td *ngFor="let y of dataRows; index as i">
-              \(Y_{{ i + 1 }} = {{ Y[i] }}\)
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>\(P(Y=Y_i)=p_i\)</td>
-            <td *ngFor="let py of PY">\({{ py }}\)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="font-weight-bold">Oblicz wartości oczekiwane zmiennych \(X\) i \(Y\).</p>
-    <div>
-      <p>
-        Wartości oczekiwane obliczamy ze wzorów \(EX = \sum_i X_ip_i\) oraz
-        \(EY=\sum_j Y_jp_j\).
-      </p>
-
-      <p>\(EX = {{ EXs }}={{ EX }}\)</p>
-      <p>\(EY = {{ EXs }}={{ EY }}\)</p>
-    </div>
-    <p class="font-weight-bold">Oblicz wariancje i odchylenia standardowe zmiennych \(X\) i \(Y\).</p>
-
-    <p>
-      Aby obliczyć wariancję \(Var X = \sigma^2\) oraz odchylenie standardowe
-      \(\sigma = \sqrt{{ "{" }}Var X{{ "}" }} \), potrzebujemy wartości \(EX^2 =
-      \sum_i X_i^2p_i\).
-    </p>
-
-    <p>\(EX^2 = {{ EX2 }}\)</p>
-    <p>
-      \(\sigma_X^2 =Var X = EX^2 - (EX)^2 = {{ EX2 }}-({{ EX }})^2 =
-      {{ VarX }}\)
-    </p>
-    <p>\(\sigma_X = \sqrt{{ "{" }} Var X {{ "}" }} = {{sigmaxs}}\approx{{ sigmax }}\)</p>
-
-    <p>\(EY^2 = {{ EY2 }}\)</p>
-    <p>
-      \(\sigma_Y^2 =Var Y = EY^2 - (EY)^2 = {{ EY2 }}-({{ EY }})^2 =
-      {{ VarY }}\)
-    </p>
-    <p>\(\sigma_Y = \sqrt{{ "{" }} Var Y {{ "}" }} = {{sigmays}}\approx{{ sigmay }}\)</p>
-
-    <p class="font-weight-bold">Sprawdź, czy zmienne X i Y są niezależne.</p>
-
-    <p>
-      Zmienne są niezależne, jeśli dla wszystkich par \(X_i, Y_j\) spełnione
-      jest równanie:
-    </p>
-
-    <p>\[ P(X_i)\cdot P(Y_j) = P(X_i,Y_j)\]</p>
-
-    <p>Wartości iloczynów \(P(X_i)\cdot P(Y_j)\):</p>
-
-    <table mathjax class="mb-5">
+  <p class="font-weight-bold">
+    Wyznacz rozkłady brzegowe zmiennych \(X\) i \(Y\).
+  </p>
+  <div class="py-2">
+    <p>Rozkład brzegowy \(X\):</p>
+    <table class="mb-5">
       <thead>
         <tr>
-          <td>\( P(X_i)\cdot P(Y_j) \)</td>
-          <td *ngFor="let x of X; index as i">
-            \( P(X_{{ i + 1 }}) = {{ PX[i] }}\)
+          <td></td>
+          <td *ngFor="let x of dataRows[0]; index as i">
+            \(X_{{ i + 1 }} = {{ X[i] }}\)
           </td>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let py of PY; index as j">
-          <td>\(P(Y_{{ j + 1 }}) = {{ PY[j] }}\)</td>
-          <td *ngFor="let px of PX">
-            {{ multiply(px,py) }}
-          </td>
+        <tr>
+          <td>\(P(X=X_i)=p_i\)</td>
+          <td *ngFor="let px of PX">\({{ px }}\)</td>
         </tr>
       </tbody>
     </table>
-    <p>Wartości \(P(X,Y)\):</p>
-
-    <table mathjax class="mb-5">
+    <p>Rozkład brzegowy \(Y\):</p>
+    <table class="mb-3">
       <thead>
         <tr>
-          <td>\( P(X_i,Y_j) \)</td>
-          <td *ngFor="let x of X; index as i">
-            \( X_{{ i + 1 }} = {{ X[i] }}\)
+          <td></td>
+          <td *ngFor="let y of dataRows; index as i">
+            \(Y_{{ i + 1 }} = {{ Y[i] }}\)
           </td>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let py of PY; index as j">
-          <td>\( Y_{{ j + 1 }} = {{ Y[j] }} \)</td>
-          <td *ngFor="let px of PX; index as i">
-            {{ dataRows[j][i] }}
-          </td>
+        <tr>
+          <td>\(P(Y=Y_i)=p_i\)</td>
+          <td *ngFor="let py of PY">\({{ py }}\)</td>
         </tr>
       </tbody>
     </table>
-
-    <p class="font-weight-bold">
-      Sprawdź, czy zmienne X i Y są skorelowane. Jeśli tak, to w jakim stopniu?
-    </p>
-
-    <p>\[EXY = \sum_{{ "{" }}i,j{{ "}" }}X_iY_jP(X_i,Y_j) = {{ EXY }}\]</p>
+  </div>
+  <p class="font-weight-bold">
+    Oblicz wartości oczekiwane zmiennych \(X\) i \(Y\).
+  </p>
+  <div>
     <p>
-      \[Cov(X,Y) = EXY - EX\cdot EY = {{ EXY }} - ({{ EX }})\cdot({{ EY }}) =
-      {{ CovXY }}\]
+      Wartości oczekiwane obliczamy ze wzorów \(EX = \sum_i X_ip_i\) oraz
+      \(EY=\sum_j Y_jp_j\).
     </p>
 
-    <p>
-      Warunkiem niezależności zmiennych \(X, Y\) jest \( Cov(X,Y) = 0\). Jeśli
-      \( Cov(X,Y) \neq 0\), to oznacza to, że zmienne są skorelowane.
-    </p>
+    <p>\(EX = {{ EXs }}={{ EX }}\)</p>
+    <p>\(EY = {{ EXs }}={{ EY }}\)</p>
+  </div>
+  <p class="font-weight-bold">
+    Oblicz wariancje i odchylenia standardowe zmiennych \(X\) i \(Y\).
+  </p>
 
-    <p>Współczynnik korelacji \(\rho(X,Y)\) wyznacza się następująco:</p>
+  <p>
+    Aby obliczyć wariancję \(Var X = \sigma^2\) oraz odchylenie standardowe
+    \(\sigma = \sqrt{{ '{' }}Var X{{ '}' }} \), potrzebujemy wartości \(EX^2 =
+    \sum_i X_i^2p_i\).
+  </p>
 
-    <p>
-      \[\rho(X,Y) = \frac{{ "{" }}Cov(X,Y) {{ "}{" }} \sigma_X\sigma_Y{{ "}" }}
-      = {{rhoXYs}} \approx {{rhoXY}}\]
-    </p>
+  <p>\(EX^2 = {{ EX2 }}\)</p>
+  <p>
+    \(\sigma_X^2 =Var X = EX^2 - (EX)^2 = {{ EX2 }}-({{ EX }})^2 = {{ VarX }}\)
+  </p>
+  <p>
+    \(\sigma_X = \sqrt{{ '{' }} Var X {{ '}' }} = {{ sigmaxs }}\approx{{
+      sigmax
+    }}\)
+  </p>
 
-    <p class="font-weight-bold">Wyznacz rozkład zmiennej Z = X + Y.</p>
+  <p>\(EY^2 = {{ EY2 }}\)</p>
+  <p>
+    \(\sigma_Y^2 =Var Y = EY^2 - (EY)^2 = {{ EY2 }}-({{ EY }})^2 = {{ VarY }}\)
+  </p>
+  <p>
+    \(\sigma_Y = \sqrt{{ '{' }} Var Y {{ '}' }} = {{ sigmays }}\approx{{
+      sigmay
+    }}\)
+  </p>
 
-    <p>
-      Rozkład zmiennej będącej funkcją zmiennych losowych wyznacza się poprzez
-      uzyskanie wszystkich możliwych wartości nowej zmiennej i zsumowanie
-      prawdopodobieństw wszystkich możliwych kombinacji prawdopodobieństw.
-    </p>
+  <p class="font-weight-bold">Sprawdź, czy zmienne X i Y są niezależne.</p>
 
-    <table mathjax class="mb-4">
-      <thead>
-        <tr>
-          <td>\(Z\)</td>
-          <td *ngFor="let z of Z; index as i">\(Z_{{ i + 1 }} = {{ z }}\)</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>\(P(Z)\)</td>
-          <td *ngFor="let pz of PZ">\({{ pz }}\)</td>
-        </tr>
-      </tbody>
-    </table>
+  <p>
+    Zmienne są niezależne, jeśli dla wszystkich par \(X_i, Y_j\) spełnione jest
+    równanie:
+  </p>
 
-    <p class="font-weight-bold">Wyznacz wartość srednią i wariancję zmiennej X + 2Y.</p>
+  <p>\[ P(X_i)\cdot P(Y_j) = P(X_i,Y_j)\]</p>
 
-    <p>Dla wartości średniej spełniony jest wzór:</p>
+  <p>Wartości iloczynów \(P(X_i)\cdot P(Y_j)\):</p>
 
-    \[E(aX+bY+c) = aE(X) + bE(Y)+c.\]
+  <table mathjax class="mb-5">
+    <thead>
+      <tr>
+        <td>\( P(X_i)\cdot P(Y_j) \)</td>
+        <td *ngFor="let x of X; index as i">
+          \( P(X_{{ i + 1 }}) = {{ PX[i] }}\)
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let py of PY; index as j">
+        <td>\(P(Y_{{ j + 1 }}) = {{ PY[j] }}\)</td>
+        <td *ngFor="let px of PX">
+          {{ multiply(px, py) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Wartości \(P(X,Y)\):</p>
 
-    <p>Dla wariancji spełniony jest natomiast wzór:</p>
+  <table mathjax class="mb-5">
+    <thead>
+      <tr>
+        <td>\( P(X_i,Y_j) \)</td>
+        <td *ngFor="let x of X; index as i">\( X_{{ i + 1 }} = {{ X[i] }}\)</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let py of PY; index as j">
+        <td>\( Y_{{ j + 1 }} = {{ Y[j] }} \)</td>
+        <td *ngFor="let px of PX; index as i">
+          {{ dataRows[j][i] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-    \[Var(aX+bY+c) = a^2Var(X)+b^2Var(Y) + 2ab\cdot Cov(X,Y)\]
+  <p class="font-weight-bold">
+    Sprawdź, czy zmienne X i Y są skorelowane. Jeśli tak, to w jakim stopniu?
+  </p>
 
-    <p>Niech \(T = X+2Y\). Na podstawie powyższych wzorów:</p>
+  <p>\[EXY = \sum_{{ '{' }}i,j{{ '}' }}X_iY_jP(X_i,Y_j) = {{ EXY }}\]</p>
+  <p>
+    \[Cov(X,Y) = EXY - EX\cdot EY = {{ EXY }} - ({{ EX }})\cdot({{ EY }}) =
+    {{ CovXY }}\]
+  </p>
 
-    \[E(T)=E(X+2Y) = E(X) + E(2Y) = E(X)+2 E(Y)\] \[Var(T)=Var(X+2Y) = Var(X) +
-    4Var(Y) + 4Cov(X,Y)\]
+  <p>
+    Warunkiem braku korelacji (niezależności) zmiennych \(X, Y\) jest \(
+    Cov(X,Y) = 0\).
+  </p>
 
-    <p class="font-weight-bold">Wyznacz funkcję prawdopodobienstwa \(W = XY\).</p>
+  <p>
+    Odwrotnie - jeśli \( Cov(X,Y) \neq 0\), to oznacza to że zmienne są
+    skorelowane.
+  </p>
 
-    <p>
-      Ponownie, należy znaleźć wszystkie możliwe wartości \(W_i\) i zsumować
-      stowarzyszone z nimi prawdopodobieństwa dla poszczególnych \(X_j, Y_k\).
-    </p>
+  <p>Współczynnik korelacji \(\rho(X,Y)\) wyznacza się następująco:</p>
 
-    
-    <table mathjax class="mb-4">
-      <thead>
-        <tr>
-          <td>\(W\)</td>
-          <td *ngFor="let w of W; index as i">\(W_{{ i + 1 }} = {{ w }}\)</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>\(P(W)\)</td>
-          <td *ngFor="let pw of PW">\({{ pw }}\)</td>
-        </tr>
-      </tbody>
-    </table>
+  <p>
+    \[\rho(X,Y) = \frac{{ '{' }}Cov(X,Y) {{ '}{' }} \sigma_X\sigma_Y{{ '}' }} =
+    {{ rhoXYs }} \approx {{ rhoXY }}\]
+  </p>
 
+  <p class="font-weight-bold">Wyznacz rozkład zmiennej Z = X + Y.</p>
+
+  <p>
+    Rozkład zmiennej będącej funkcją zmiennych losowych wyznacza się poprzez
+    uzyskanie wszystkich możliwych wartości nowej zmiennej i zsumowanie
+    prawdopodobieństw wszystkich możliwych kombinacji prawdopodobieństw.
+  </p>
+
+  <table mathjax class="mb-4">
+    <thead>
+      <tr>
+        <td>\(Z\)</td>
+        <td *ngFor="let z of Z; index as i">\(Z_{{ i + 1 }} = {{ z }}\)</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>\(P(Z)\)</td>
+        <td *ngFor="let pz of PZ">\({{ pz }}\)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="font-weight-bold">
+    Wyznacz wartość srednią i wariancję zmiennej X + 2Y.
+  </p>
+
+  <p>Dla wartości średniej spełniony jest wzór:</p>
+
+  \[E(aX+bY+c) = aE(X) + bE(Y)+c.\]
+
+  <p>Dla wariancji spełniony jest natomiast wzór:</p>
+
+  \[Var(aX+bY+c) = a^2Var(X)+b^2Var(Y) + 2ab\cdot Cov(X,Y)\]
+
+  <p>Niech \(T = X+2Y\). Na podstawie powyższych wzorów:</p>
+
+  \[E(T)=E(X+2Y) = E(X) + E(2Y) = E(X)+2 E(Y)\] \[Var(T)=Var(X+2Y) = Var(X) +
+  4Var(Y) + 4Cov(X,Y)\]
+
+  <p class="font-weight-bold">Wyznacz funkcję prawdopodobienstwa \(W = XY\).</p>
+
+  <p>
+    Ponownie, należy znaleźć wszystkie możliwe wartości \(W_i\) i zsumować
+    stowarzyszone z nimi prawdopodobieństwa dla poszczególnych \(X_j, Y_k\).
+  </p>
+
+  <table mathjax class="mb-4">
+    <thead>
+      <tr>
+        <td>\(W\)</td>
+        <td *ngFor="let w of W; index as i">\(W_{{ i + 1 }} = {{ w }}\)</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>\(P(W)\)</td>
+        <td *ngFor="let pw of PW">\({{ pw }}\)</td>
+      </tr>
+    </tbody>
+  </table>
 
   <h3>Appendix</h3>
-  <p>Wszelkie uwagi proszę słać na adres: <a href="mailto:igor.nowicki.spam@gmail.com">igor.nowicki.spam@gmail.com</a>.</p>
+  <p>
+    Wszelkie uwagi proszę słać na adres:
+    <a href="mailto:igor.nowicki.spam@gmail.com">igor.nowicki.spam@gmail.com</a>
+    .
+  </p>
 </div>
-
-
