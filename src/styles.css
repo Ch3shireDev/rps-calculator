@@ -1,19 +1,33 @@
-body{
+body {
     background-image: url('./assets/background.png');
     background-attachment: fixed;
 }
 
-.main-element{
+.main-element {
     background: #eeeeeee6;
-    color:#333;
-    overflow-x:auto;
-    height:100%;
+    color: #333;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-input{
+
+input {
     background: #eeeeee;
 }
 
-table{
-    background:#eeeeee;
+table {
+    background: #eeeeee;
+}
+
+@media only screen and(max-width: 576px) {
+    .main-element {
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    body {
+        background-image: none;
+        background-color: white;
+    }
 }
