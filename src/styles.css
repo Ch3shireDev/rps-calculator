@@ -1,6 +1,7 @@
 body {
     background-image: url('./assets/background.png');
-    background-size: cover;
+    background-size: fill;
+    background-attachment: fixed;
 }
 
 .main-element {

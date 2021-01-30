@@ -1,6 +1,6 @@
 {
-  "name": "rps-calculator",
-  "short_name": "rps-calculator",
+  "name": "Kalkulator RPS",
+  "short_name": "RPS",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
