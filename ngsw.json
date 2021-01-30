@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1611870160036,
+  "timestamp": 1612049136953,
   "index": "/rps-calculator/index.html",
   "assetGroups": [
     {
@@ -17,7 +17,7 @@
         "/rps-calculator/polyfills-es5.0290b245fbcca09184ac.js",
         "/rps-calculator/runtime-es2015.cdfb0ddb511f65fdc0a0.js",
         "/rps-calculator/runtime-es5.cdfb0ddb511f65fdc0a0.js",
-        "/rps-calculator/styles.4117e1b17aede6b1adba.css"
+        "/rps-calculator/styles.d0e03b135d948df8e130.css"
       ],
       "patterns": []
     },
@@ -53,7 +53,7 @@
     "/rps-calculator/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/rps-calculator/background.065fc496f14f29e64a03.png": "6a42c711fca17acaa00e2bfb373697f111bc19d1",
     "/rps-calculator/favicon.ico": "6b9e7c0b44ef751d8a24c0cf54e52311cc156a28",
-    "/rps-calculator/index.html": "5bf18e5f5b353b55ef97862456b4c1adaf5c7e60",
+    "/rps-calculator/index.html": "e786bdaacce2c736efebbfc0efd26efe537c366d",
     "/rps-calculator/main-es2015.e5b9cb7f9d57e1512c11.js": "881bfb2f634abf8df81a78ac5779cf692d7e140e",
     "/rps-calculator/main-es5.e5b9cb7f9d57e1512c11.js": "b91c7a27bad70c2de0d8eea49a2c69db202c358a",
     "/rps-calculator/manifest.webmanifest": "0ef79980f68cafb4bbf3d775b1dba762b8a6332a",
@@ -61,7 +61,7 @@
     "/rps-calculator/polyfills-es5.0290b245fbcca09184ac.js": "a7bfe75cfe39caaf5bc4c64b35dd9f1f0918a25f",
     "/rps-calculator/runtime-es2015.cdfb0ddb511f65fdc0a0.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/rps-calculator/runtime-es5.cdfb0ddb511f65fdc0a0.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "/rps-calculator/styles.4117e1b17aede6b1adba.css": "16100c60f63a962cf00c33187b057f0c5b0e04ef"
+    "/rps-calculator/styles.d0e03b135d948df8e130.css": "10612bc8dd1071f6e3d2d76a02ee17fe30496cf0"
   },
   "navigationUrls": [
     {
