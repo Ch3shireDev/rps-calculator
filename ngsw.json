@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1612050172156,
+  "timestamp": 1612092080444,
   "index": "/rps-calculator/index.html",
   "assetGroups": [
     {
@@ -35,6 +35,7 @@
         "/rps-calculator/assets/icons/icon-512x512.png",
         "/rps-calculator/assets/icons/icon-72x72.png",
         "/rps-calculator/assets/icons/icon-96x96.png",
+        "/rps-calculator/assets/icons/script.sh",
         "/rps-calculator/background.065fc496f14f29e64a03.png"
       ],
       "patterns": []
@@ -43,14 +44,15 @@
   "dataGroups": [],
   "hashTable": {
     "/rps-calculator/assets/background.png": "6a42c711fca17acaa00e2bfb373697f111bc19d1",
-    "/rps-calculator/assets/icons/icon-128x128.png": "9116352f789d8670916cb97281fe3af86c52637a",
-    "/rps-calculator/assets/icons/icon-144x144.png": "f15c4785095b10c2e38acbcf83a264e3e7ce8b2a",
-    "/rps-calculator/assets/icons/icon-152x152.png": "4a76141845eedb6ab0223f0f17afdd9bb3440648",
-    "/rps-calculator/assets/icons/icon-192x192.png": "86b57e2576b974a5a188ead379a969a4c4f89ceb",
-    "/rps-calculator/assets/icons/icon-384x384.png": "fa7df7769a9288cc74c4ef501526c6ae5026beb3",
-    "/rps-calculator/assets/icons/icon-512x512.png": "220f35c98a5b3b3a1dd09f3297362a80106fe5d3",
-    "/rps-calculator/assets/icons/icon-72x72.png": "ca1cec1e1e2de62374af9de363576599c3922dc4",
-    "/rps-calculator/assets/icons/icon-96x96.png": "9bc7dc88d366003922c0a28644356f692bae244e",
+    "/rps-calculator/assets/icons/icon-128x128.png": "f9d2b8b7e069126269a44fbd922bb643931e93af",
+    "/rps-calculator/assets/icons/icon-144x144.png": "61f922528eae06bb23e6f65154af5bd9a7151727",
+    "/rps-calculator/assets/icons/icon-152x152.png": "1f02c56735bd8e8baabbd2cae52811f0c82638f4",
+    "/rps-calculator/assets/icons/icon-192x192.png": "6995f168297510a14817a86ffa84cf6fd23c2f72",
+    "/rps-calculator/assets/icons/icon-384x384.png": "65a68e43ef3aeae5d682265d7515040dc38c75d8",
+    "/rps-calculator/assets/icons/icon-512x512.png": "931c0f1f2f98a9f58fc84a163669612b6715feb1",
+    "/rps-calculator/assets/icons/icon-72x72.png": "b1f17ceab86e3b9dc886a114add69d321624feea",
+    "/rps-calculator/assets/icons/icon-96x96.png": "8834016e25cdd6fc11f6d303684f6182c8d514f9",
+    "/rps-calculator/assets/icons/script.sh": "dd5d74c960d1c72f5c93418d628c2a726c8de085",
     "/rps-calculator/background.065fc496f14f29e64a03.png": "6a42c711fca17acaa00e2bfb373697f111bc19d1",
     "/rps-calculator/favicon.ico": "6b9e7c0b44ef751d8a24c0cf54e52311cc156a28",
     "/rps-calculator/index.html": "5fbe8c02097ddc0711a626e94a291bfd94825544",
